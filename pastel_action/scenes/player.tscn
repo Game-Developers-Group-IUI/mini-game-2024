@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc1bh0iioueft"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_cvx1t"]
+[ext_resource type="Texture2D" uid="uid://dcracwiesox6k" path="res://assets/icon.svg" id="2_5i80y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33oow"]
+size = Vector2(64, 64)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0dly0"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+scale_min = 0.1
+scale_max = 0.1
+
+[node name="Player" type="CharacterBody2D" groups=["game_nodes"]]
+motion_mode = 1
+script = ExtResource("1_cvx1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_33oow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_5i80y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_0dly0")
+texture = ExtResource("2_5i80y")
+lifetime = 0.25
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
+
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
