@@ -3,6 +3,7 @@ extends Node
 
 ## Scenes
 @export var player_scene: PackedScene
+@export var level_scene: PackedScene
 
 ## Static References
 @export var main_menu: CenterContainer
@@ -21,6 +22,7 @@ const quit_on_escape: bool = false
 
 ## Runtime References
 var player: Player
+var level: Level
 
 ## Variables
 enum state {main_menu, paused, playing}
@@ -61,21 +63,6 @@ func _physics_process(delta: float) -> void:
 		time += delta
 		time_label.text = "Time: " + round_digits(time, 2)
 		score_label.text = "Score: " + round_digits(score, 0)
-		
-		## Spawn random sprites to act as a background
-		if randf() < 0.5:
-			if get_tree().get_nodes_in_group(&"decorations").size() >= 100:
-				get_tree().get_nodes_in_group(&"decorations").pick_random().queue_free()
-			var sprite: Sprite2D = Sprite2D.new()
-			sprite.texture = player.sprite.texture
-			sprite.modulate = Color(randf(), randf(), randf())
-			sprite.z_index = -1
-			sprite.scale = Vector2(randf_range(0.1, 5.0), randf_range(0.1, 5.0))
-			add_child(sprite)
-			sprite.global_position = player.global_position\
-			+ Vector2(randf_range(-64 * 50, 64 * 50), randf_range(-64 * 50, 64 * 50))
-			sprite.add_to_group(&"game_nodes")
-			sprite.add_to_group(&"decorations")
 
 
 func _on_start_button_down() -> void:
@@ -109,9 +96,12 @@ func start_game() -> void:
 	## Set up game
 	time = 0.0
 	score = 0
-	var scene: Player = player_scene.instantiate()
-	add_child(scene)
-	player = scene
+	var levelScn: Level = level_scene.instantiate()
+	add_child(levelScn)
+	level = levelScn
+	var playerScn: Player = player_scene.instantiate()
+	add_child(playerScn)
+	player = playerScn
 
 
 func exit_game() -> void:

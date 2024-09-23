@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpy1cff5kk3os"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_xwnn2"]
+[ext_resource type="Texture2D" uid="uid://tsgrhsti8l8g" path="res://assets/programmerBasement.png" id="2_t6jit"]
+[ext_resource type="Texture2D" uid="uid://deicu2dnpxcm5" path="res://assets/pentMap.png" id="3_ymjkq"]
+[ext_resource type="Texture2D" uid="uid://b2hmpjll7i81o" path="res://assets/programmerAboveground.png" id="4_no4dr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pixmk"]
+radius = 72.0
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("basementFloor", "pentagram", "abovegroundFloor", "walls", "ladder") groups=["game_nodes"]]
+script = ExtResource("1_xwnn2")
+basementFloor = NodePath("Basement")
+pentagram = NodePath("Basement/Pentagram")
+abovegroundFloor = NodePath("AboveGround")
+walls = NodePath("Walls")
+ladder = NodePath("Ladder")
+
+[node name="Basement" type="Sprite2D" parent="."]
+scale = Vector2(1.18551, 1.18551)
+texture = ExtResource("2_t6jit")
+
+[node name="Pentagram" type="Sprite2D" parent="Basement"]
+scale = Vector2(0.333999, 0.333999)
+texture = ExtResource("3_ymjkq")
+
+[node name="AboveGround" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.1899, 1.1899)
+texture = ExtResource("4_no4dr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(-2208, -216)
+polygon = PackedVector2Array(1192, -280, 1568, -288, 2848, -288, 2848, 720, 1568, 720, 1568, -288, 1192, -280, 1184, 840, 3264, 848, 3288, -464, 1184, -448)
+
+[node name="Ladder" type="Area2D" parent="."]
+position = Vector2(-608, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
+shape = SubResource("CircleShape2D_pixmk")
