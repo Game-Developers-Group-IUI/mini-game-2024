@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq8ej5qqj6hj1"]
+[gd_scene load_steps=4 format=3 uid="uid://bq8ej5qqj6hj1"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_vuj6t"]
 [ext_resource type="PackedScene" uid="uid://dc1bh0iioueft" path="res://scenes/player.tscn" id="2_nneto"]
+[ext_resource type="PackedScene" uid="uid://cpy1cff5kk3os" path="res://scenes/level.tscn" id="3_r35gd"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("main_menu", "start_button", "exit_game_button", "pause_menu", "resume_button", "quit_button", "game_interface", "time_label", "score_label")]
 script = ExtResource("1_vuj6t")
 player_scene = ExtResource("2_nneto")
+level_scene = ExtResource("3_r35gd")
 main_menu = NodePath("UI/MarginContainer/MainMenu")
 start_button = NodePath("UI/MarginContainer/MainMenu/VBoxContainer/HBoxContainer/Start")
 exit_game_button = NodePath("UI/MarginContainer/MainMenu/VBoxContainer/Quit")
