@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game.gd" id="1_vuj6t"]
 [ext_resource type="PackedScene" uid="uid://dc1bh0iioueft" path="res://scenes/player.tscn" id="2_nneto"]
-[ext_resource type="PackedScene" uid="uid://cpy1cff5kk3os" path="res://scenes/level.tscn" id="3_r35gd"]
+[ext_resource type="PackedScene" uid="uid://qejkcu3ftinw" path="res://scenes/level.tscn" id="3_r35gd"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("main_menu", "start_button", "exit_game_button", "pause_menu", "resume_button", "quit_button", "game_interface", "time_label", "score_label")]
 script = ExtResource("1_vuj6t")
@@ -48,7 +48,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/MarginContainer/MainMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Minigame"
+text = "Pastel Action"
 horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="UI/MarginContainer/MainMenu/VBoxContainer/HBoxContainer"]
