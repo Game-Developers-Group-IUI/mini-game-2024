@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deicu2dnpxcm5"
-path="res://.godot/imported/pentMap.png-c349072c9f9f74eff20413cf9c7a7425.ctex"
+uid="uid://b2hmpjll7i81o"
+path="res://.godot/imported/programmer_aboveground.png-dd62a3f1d3b367f37d0d8a6dc7750724.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pentMap.png"
-dest_files=["res://.godot/imported/pentMap.png-c349072c9f9f74eff20413cf9c7a7425.ctex"]
+source_file="res://assets/programmer_aboveground.png"
+dest_files=["res://.godot/imported/programmer_aboveground.png-dd62a3f1d3b367f37d0d8a6dc7750724.ctex"]
 
 [params]
 

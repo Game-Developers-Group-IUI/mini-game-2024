@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7i1xjney2rfh"
-path="res://.godot/imported/FrightWhiteChocolate.png-6906dfb067703ba771d0b57a43ce56c3.ctex"
+uid="uid://cadyiotj0oah5"
+path="res://.godot/imported/cackling_caramel.png-b4492548e59db873bf84ed74c5aa9970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/candy/FrightWhiteChocolate.png"
-dest_files=["res://.godot/imported/FrightWhiteChocolate.png-6906dfb067703ba771d0b57a43ce56c3.ctex"]
+source_file="res://assets/ingredients/cackling_caramel.png"
+dest_files=["res://.godot/imported/cackling_caramel.png-b4492548e59db873bf84ed74c5aa9970.ctex"]
 
 [params]
 

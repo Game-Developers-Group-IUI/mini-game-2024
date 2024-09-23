@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cadyiotj0oah5"
-path="res://.godot/imported/CacklingCaramel.png-84ac3ecc48d7b184d31932f507364635.ctex"
+uid="uid://tsgrhsti8l8g"
+path="res://.godot/imported/programmer_basement.png-e079430bb96784952b049d083db621ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/CacklingCaramel.png"
-dest_files=["res://.godot/imported/CacklingCaramel.png-84ac3ecc48d7b184d31932f507364635.ctex"]
+source_file="res://assets/programmer_basement.png"
+dest_files=["res://.godot/imported/programmer_basement.png-e079430bb96784952b049d083db621ed.ctex"]
 
 [params]
 
