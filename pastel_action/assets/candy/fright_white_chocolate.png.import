@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://to7sbyuhk0ee"
-path="res://.godot/imported/PlagueSyrup.png-1452771ae18d0081bcc454ece6fb32c5.ctex"
+uid="uid://b7i1xjney2rfh"
+path="res://.godot/imported/fright_white_chocolate.png-6995493fbe932d6835cd5275e6b1f9fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/PlagueSyrup.png"
-dest_files=["res://.godot/imported/PlagueSyrup.png-1452771ae18d0081bcc454ece6fb32c5.ctex"]
+source_file="res://assets/candy/fright_white_chocolate.png"
+dest_files=["res://.godot/imported/fright_white_chocolate.png-6995493fbe932d6835cd5275e6b1f9fe.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q4mpqrgfblex"
-path="res://.godot/imported/SpookyMilk.png-c255296bbf67616bcd75d48213684c50.ctex"
+uid="uid://deicu2dnpxcm5"
+path="res://.godot/imported/pent_map.png-96c05680984598241106a6d30544dff2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/SpookyMilk.png"
-dest_files=["res://.godot/imported/SpookyMilk.png-c255296bbf67616bcd75d48213684c50.ctex"]
+source_file="res://assets/pent_map.png"
+dest_files=["res://.godot/imported/pent_map.png-96c05680984598241106a6d30544dff2.ctex"]
 
 [params]
 

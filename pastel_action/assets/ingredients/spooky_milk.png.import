@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2hmpjll7i81o"
-path="res://.godot/imported/programmerAboveground.png-2654ca6d4299c9c9ce54c8f7f60bd234.ctex"
+uid="uid://q4mpqrgfblex"
+path="res://.godot/imported/spooky_milk.png-f347f523831d36e2ac65d6bf57252e18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/programmerAboveground.png"
-dest_files=["res://.godot/imported/programmerAboveground.png-2654ca6d4299c9c9ce54c8f7f60bd234.ctex"]
+source_file="res://assets/ingredients/spooky_milk.png"
+dest_files=["res://.godot/imported/spooky_milk.png-f347f523831d36e2ac65d6bf57252e18.ctex"]
 
 [params]
 

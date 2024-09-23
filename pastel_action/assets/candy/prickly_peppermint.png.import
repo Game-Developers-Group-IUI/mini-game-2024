@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxp6llklekrwi"
-path="res://.godot/imported/CrimsonCane.png-fdb8e5cfe95a8e916c599f736190bb03.ctex"
+uid="uid://dqymymsu8vy2r"
+path="res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/CrimsonCane.png"
-dest_files=["res://.godot/imported/CrimsonCane.png-fdb8e5cfe95a8e916c599f736190bb03.ctex"]
+source_file="res://assets/candy/prickly_peppermint.png"
+dest_files=["res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"]
 
 [params]
 
