@@ -36,7 +36,7 @@ unique_name_in_owner = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-2208, -216)
-polygon = PackedVector2Array(1192, -280, 1568, -312, 2848, -312, 2848, 720, 1568, 720, 1568, -312, 1192, -280, 1184, 840, 3264, 848, 3288, -464, 1184, -448)
+polygon = PackedVector2Array(1192, -280, 1568, -288, 2848, -288, 2848, 720, 1568, 720, 1568, -288, 1192, -280, 1184, 840, 3264, 848, 3288, -464, 1184, -448)
 
 [node name="Ladder" type="Area2D" parent="."]
 position = Vector2(-608, 0)
