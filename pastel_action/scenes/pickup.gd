@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	
 	## Pickup anim
 	if pickup_active:
-		sprite_height = lerpf(sprite_height, -24, delta * 20)
+		sprite_height = lerpf(sprite_height, -24, 0.333)
 	else:
 		if sprite_height < 0:
 			sprite_height += sprite_accel
@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	## Velocity and collision
 	if landed:
 		## Decay speed and set it to zero
-		velocity /= max(1.5, (delta * 60 * 1.5))
+		velocity /= 1.5
 		if is_zero_approx(velocity.length_squared()):
 			velocity = Vector2.ZERO
 		collision_mask = 2 + 4

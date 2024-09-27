@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	
 	## Deal with pickups
 	if pickup_active and is_instance_valid(pickup):
-		pickup.position = lerp(pickup.position, position, delta * 40)
+		pickup.position = lerp(pickup.position, position, 0.666)
 		
 		## drop
 		if Input.is_action_just_pressed(&"confirm") and not on_cooldown:
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 		
 		## throw
 		if Input.is_action_just_pressed(&"cancel") and not on_cooldown:
-			pickup.velocity = velocity * 4
+			pickup.velocity = velocity * 6
 			pickup.pickup_active = false
 			pickup_active = false
 			pickup = null
@@ -51,10 +51,10 @@ func _process(delta: float) -> void:
 		speed *= 0.8
 	
 	if input_direction:
-		velocity = input_direction * speed * delta * 60
+		velocity = input_direction * speed
 	else:
 		## Decay speed and set it to zero
-		velocity /= (delta * 60 * 2)
+		velocity /= 2
 		if is_zero_approx(velocity.length_squared()):
 			velocity = Vector2.ZERO
 	
