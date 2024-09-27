@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tsgrhsti8l8g"
-path="res://.godot/imported/programmerBasement.png-5441741d61691af9cc942fa8dc6ab130.ctex"
+uid="uid://to7sbyuhk0ee"
+path="res://.godot/imported/plague_syrup.png-8d4d775d5ba8adf3218d6cf429f8707f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/programmerBasement.png"
-dest_files=["res://.godot/imported/programmerBasement.png-5441741d61691af9cc942fa8dc6ab130.ctex"]
+source_file="res://assets/ingredients/plague_syrup.png"
+dest_files=["res://.godot/imported/plague_syrup.png-8d4d775d5ba8adf3218d6cf429f8707f.ctex"]
 
 [params]
 

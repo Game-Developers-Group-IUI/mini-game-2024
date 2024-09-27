@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ccsrx4oje8"]
+
+[ext_resource type="PackedScene" uid="uid://bsy0hxfsr4gxw" path="res://scenes/pickup.tscn" id="1_tcw0q"]
+[ext_resource type="Script" path="res://scenes/ingredients/ingredient.gd" id="2_44ah3"]
+
+[node name="Ingredient" instance=ExtResource("1_tcw0q")]
+script = ExtResource("2_44ah3")

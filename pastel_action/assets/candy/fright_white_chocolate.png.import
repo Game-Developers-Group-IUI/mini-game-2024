@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deicu2dnpxcm5"
-path="res://.godot/imported/pentMap.png-c349072c9f9f74eff20413cf9c7a7425.ctex"
+uid="uid://b7i1xjney2rfh"
+path="res://.godot/imported/fright_white_chocolate.png-6995493fbe932d6835cd5275e6b1f9fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pentMap.png"
-dest_files=["res://.godot/imported/pentMap.png-c349072c9f9f74eff20413cf9c7a7425.ctex"]
+source_file="res://assets/candy/fright_white_chocolate.png"
+dest_files=["res://.godot/imported/fright_white_chocolate.png-6995493fbe932d6835cd5275e6b1f9fe.ctex"]
 
 [params]
 

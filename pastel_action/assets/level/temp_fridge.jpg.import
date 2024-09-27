@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://to7sbyuhk0ee"
-path="res://.godot/imported/PlagueSyrup.png-1452771ae18d0081bcc454ece6fb32c5.ctex"
+uid="uid://dvs4eu2t1pukc"
+path="res://.godot/imported/temp_fridge.jpg-cf7f6063f646eef566f53c2bfffa335e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/PlagueSyrup.png"
-dest_files=["res://.godot/imported/PlagueSyrup.png-1452771ae18d0081bcc454ece6fb32c5.ctex"]
+source_file="res://assets/level/temp_fridge.jpg"
+dest_files=["res://.godot/imported/temp_fridge.jpg-cf7f6063f646eef566f53c2bfffa335e.ctex"]
 
 [params]
 
