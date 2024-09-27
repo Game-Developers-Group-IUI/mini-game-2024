@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c07pqwwrr7amg"]
+
+[ext_resource type="Script" path="res://scenes/basket.gd" id="1_70rtj"]
+[ext_resource type="Texture2D" uid="uid://dvs4eu2t1pukc" path="res://assets/level/temp_fridge.jpg" id="1_tc4qu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqtwl"]
+radius = 117.004
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv53x"]
+size = Vector2(144, 144)
+
+[node name="DetectionRadius" type="Area2D" groups=["game_nodes"]]
+priority = -1
+script = ExtResource("1_70rtj")
+texture_source = ExtResource("1_tc4qu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(72, 72)
+shape = SubResource("CircleShape2D_hqtwl")
+
+[node name="BasketCollision" type="StaticBody2D" parent="."]
+position = Vector2(72, 72)
+collision_layer = 3
+
+[node name="Sprite" type="Sprite2D" parent="BasketCollision"]
+unique_name_in_owner = true
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("1_tc4qu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasketCollision"]
+shape = SubResource("RectangleShape2D_wv53x")
+debug_color = Color(0.981172, 0, 0.373372, 0.42)

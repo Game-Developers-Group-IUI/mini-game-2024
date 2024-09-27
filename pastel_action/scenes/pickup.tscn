@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsy0hxfsr4gxw"]
+
+[ext_resource type="Script" path="res://scenes/pickup.gd" id="1_w2ewi"]
+[ext_resource type="Texture2D" uid="uid://cadyiotj0oah5" path="res://assets/ingredients/cackling_caramel.png" id="2_x53m4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bedei"]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ech3c"]
+radius = 24.0
+
+[node name="Pickup" type="CharacterBody2D" groups=["game_nodes"]]
+collision_layer = 2
+collision_mask = 6
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_w2ewi")
+
+[node name="PickupArea" type="Area2D" parent="." groups=["game_nodes"]]
+unique_name_in_owner = true
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_bedei")
+
+[node name="Sprite" type="Sprite2D" parent="PickupArea"]
+unique_name_in_owner = true
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(3, 3)
+texture = ExtResource("2_x53m4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ech3c")

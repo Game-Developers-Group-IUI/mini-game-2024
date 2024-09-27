@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bspoe6xrurxgs"]
+
+[ext_resource type="PackedScene" uid="uid://b4ccsrx4oje8" path="res://scenes/ingredients/ingredient.tscn" id="1_xo5mx"]
+[ext_resource type="Script" path="res://scenes/ingredients/milk.gd" id="2_hmx6k"]
+[ext_resource type="Texture2D" uid="uid://q4mpqrgfblex" path="res://assets/ingredients/spooky_milk.png" id="3_1m8rm"]
+
+[node name="SpookyMilk" instance=ExtResource("1_xo5mx")]
+script = ExtResource("2_hmx6k")
+
+[node name="Sprite" parent="PickupArea" index="1"]
+texture = ExtResource("3_1m8rm")
