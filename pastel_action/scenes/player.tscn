@@ -7,6 +7,7 @@
 size = Vector2(64, 64)
 
 [node name="Player" type="CharacterBody2D" groups=["game_nodes"]]
+texture_filter = 1
 motion_mode = 1
 script = ExtResource("1_cvx1t")
 
@@ -18,5 +19,5 @@ texture = ExtResource("2_5i80y")
 
 [node name="CooldownTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.15
 one_shot = true
