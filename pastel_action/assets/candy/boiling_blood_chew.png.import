@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxw0fyakqutl3"
-path="res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"
+uid="uid://jkan1ss2w7rj"
+path="res://.godot/imported/boiling_blood_chew.png-550f1d4092de00564a14cc8773ab97c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/candy/prickly_peppermint.png"
-dest_files=["res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"]
+source_file="res://assets/candy/boiling_blood_chew.png"
+dest_files=["res://.godot/imported/boiling_blood_chew.png-550f1d4092de00564a14cc8773ab97c7.ctex"]
 
 [params]
 

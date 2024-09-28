@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxw0fyakqutl3"
-path="res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"
+uid="uid://dk1aeaqi6bn14"
+path="res://.godot/imported/basket_cane.png-695c9021104eff486f5db13c687de9cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/candy/prickly_peppermint.png"
-dest_files=["res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"]
+source_file="res://assets/level/basket_cane.png"
+dest_files=["res://.godot/imported/basket_cane.png-695c9021104eff486f5db13c687de9cb.ctex"]
 
 [params]
 

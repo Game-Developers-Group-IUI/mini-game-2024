@@ -4,11 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://tsgrhsti8l8g" path="res://assets/programmer_basement.png" id="2_p31m3"]
 [ext_resource type="Texture2D" uid="uid://deicu2dnpxcm5" path="res://assets/pent_map.png" id="3_81j1i"]
 [ext_resource type="Texture2D" uid="uid://b2hmpjll7i81o" path="res://assets/programmer_aboveground.png" id="4_8g8yy"]
-[ext_resource type="PackedScene" uid="uid://c07pqwwrr7amg" path="res://scenes/basket.tscn" id="6_uriej"]
-[ext_resource type="PackedScene" uid="uid://ri63vmbvqox0" path="res://scenes/ingredients/caramel.tscn" id="6_yx7ef"]
-[ext_resource type="PackedScene" uid="uid://b8a7jqafcpmkf" path="res://scenes/ingredients/syrup.tscn" id="7_ikqk7"]
-[ext_resource type="PackedScene" uid="uid://bspoe6xrurxgs" path="res://scenes/ingredients/milk.tscn" id="8_k3f6e"]
-[ext_resource type="PackedScene" uid="uid://j0jouqofdot7" path="res://scenes/ingredients/cane.tscn" id="9_x8vii"]
+[ext_resource type="PackedScene" uid="uid://cehrkbc32xcgy" path="res://scenes/basket_cane.tscn" id="4_748o5"]
+[ext_resource type="PackedScene" uid="uid://jdfxyvfa3isb" path="res://scenes/basket_milk.tscn" id="5_u64mr"]
+[ext_resource type="PackedScene" uid="uid://cnlysrvj7jt2o" path="res://scenes/basket_caramel.tscn" id="6_rajuq"]
+[ext_resource type="PackedScene" uid="uid://c4ob4of7b2xp5" path="res://scenes/basket_syrup.tscn" id="7_gon7l"]
+
+[sub_resource type="Curve2D" id="Curve2D_o6u5w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 716.323, -415.332, 0, 0, 0, 0, 716.323, -2.25488, 0, 0, 0, 0, 702.086, 19.6148, 0, 0, 0, 0, 676.28, 25.6557, 0, 0, 0, 0, 75.6366, 25.6557)
+}
+point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pixmk"]
 radius = 72.0
@@ -30,15 +35,46 @@ texture = ExtResource("2_p31m3")
 scale = Vector2(0.333999, 0.333999)
 texture = ExtResource("3_81j1i")
 
+[node name="CaneBasket" parent="Basement" node_paths=PackedStringArray("pickup_holder") instance=ExtResource("4_748o5")]
+position = Vector2(-546.6, 303.667)
+scale = Vector2(0.843519, 0.843519)
+pickup_holder = NodePath("../../PickupHolder")
+
+[node name="MilkBasket" parent="Basement" node_paths=PackedStringArray("pickup_holder") instance=ExtResource("5_u64mr")]
+position = Vector2(425.133, 303.667)
+scale = Vector2(0.843519, 0.843519)
+pickup_holder = NodePath("../../PickupHolder")
+
+[node name="CaramelBasket" parent="Basement" node_paths=PackedStringArray("pickup_holder") instance=ExtResource("6_rajuq")]
+position = Vector2(425.133, -425.133)
+scale = Vector2(0.843519, 0.843519)
+pickup_holder = NodePath("../../PickupHolder")
+
+[node name="SyrupBasket" parent="Basement" node_paths=PackedStringArray("pickup_holder") instance=ExtResource("7_gon7l")]
+position = Vector2(-546.6, -425.133)
+scale = Vector2(0.843519, 0.843519)
+pickup_holder = NodePath("../../PickupHolder")
+
 [node name="AboveGround" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(1.1899, 1.1899)
 texture = ExtResource("4_8g8yy")
 
+[node name="Path2D" type="Path2D" parent="AboveGround"]
+position = Vector2(-18.4423, -68.8931)
+scale = Vector2(0.954938, 1.11295)
+curve = SubResource("Curve2D_o6u5w")
+
+[node name="Path2D2" type="Path2D" parent="AboveGround"]
+position = Vector2(-27.1732, 7.09222)
+scale = Vector2(1.07037, 1.2959)
+curve = SubResource("Curve2D_o6u5w")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Walls" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 7
 collision_mask = 3
 
@@ -58,25 +94,5 @@ wait_time = 0.25
 one_shot = true
 
 [node name="PickupHolder" type="Node2D" parent="."]
-
-[node name="CaramelBasket" parent="." node_paths=PackedStringArray("pickup_holder") instance=ExtResource("6_uriej")]
-position = Vector2(504, -504)
-ingredient = ExtResource("6_yx7ef")
-pickup_holder = NodePath("../PickupHolder")
-
-[node name="SyrupBasket" parent="." node_paths=PackedStringArray("pickup_holder") instance=ExtResource("6_uriej")]
-position = Vector2(-648, -504)
-ingredient = ExtResource("7_ikqk7")
-pickup_holder = NodePath("../PickupHolder")
-
-[node name="MilkBasket" parent="." node_paths=PackedStringArray("pickup_holder") instance=ExtResource("6_uriej")]
-position = Vector2(504, 360)
-ingredient = ExtResource("8_k3f6e")
-pickup_holder = NodePath("../PickupHolder")
-
-[node name="CaneBasket" parent="." node_paths=PackedStringArray("pickup_holder") instance=ExtResource("6_uriej")]
-position = Vector2(-648, 361)
-ingredient = ExtResource("9_x8vii")
-pickup_holder = NodePath("../PickupHolder")
 
 [connection signal="timeout" from="LadderCooldown" to="." method="_on_ladder_cooldown_timeout"]
