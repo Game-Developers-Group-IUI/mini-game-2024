@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4iqhvrafclf5"]
+
+[ext_resource type="Script" path="res://scenes/twin.gd" id="1_7ukkl"]
+[ext_resource type="Texture2D" uid="uid://d3pgehgx464rl" path="res://assets/characters/twin.png" id="2_cmd54"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52gdf"]
+atlas = ExtResource("2_cmd54")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbjq3"]
+atlas = ExtResource("2_cmd54")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fbuk"]
+atlas = ExtResource("2_cmd54")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccogm"]
+atlas = ExtResource("2_cmd54")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6re6s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52gdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbjq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fbuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccogm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Twin" type="PathFollow2D"]
+y_sort_enabled = true
+script = ExtResource("1_7ukkl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_6re6s")
+autoplay = "default"
+frame = 3
+frame_progress = 0.512606

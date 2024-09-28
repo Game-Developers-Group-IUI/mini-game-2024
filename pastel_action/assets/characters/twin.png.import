@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxw0fyakqutl3"
-path="res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"
+uid="uid://d3pgehgx464rl"
+path="res://.godot/imported/twin.png-878ec3fc5b83cc7d4847b5310777d26c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/candy/prickly_peppermint.png"
-dest_files=["res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"]
+source_file="res://assets/characters/twin.png"
+dest_files=["res://.godot/imported/twin.png-878ec3fc5b83cc7d4847b5310777d26c.ctex"]
 
 [params]
 

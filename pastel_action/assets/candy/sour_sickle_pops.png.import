@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxw0fyakqutl3"
-path="res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"
+uid="uid://b5fn2b3ji0gh3"
+path="res://.godot/imported/sour_sickle_pops.png-21c2b289fcc60087171b1ce0b655b3ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/candy/prickly_peppermint.png"
-dest_files=["res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"]
+source_file="res://assets/candy/sour_sickle_pops.png"
+dest_files=["res://.godot/imported/sour_sickle_pops.png-21c2b289fcc60087171b1ce0b655b3ca.ctex"]
 
 [params]
 
