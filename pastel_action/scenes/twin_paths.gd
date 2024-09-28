@@ -1,10 +1,10 @@
 class_name TwinPaths
 extends Node2D
 
-@export var Twin1 : Twin
-@export var Twin2 : Twin
-@export var TwinPath1 : Path2D
-@export var TwinPath2 : Path2D
+@export var twin_1 : Twin
+@export var twin_2 : Twin
+@export var twin_path_1 : Path2D
+@export var twin_path_2 : Path2D
 
 var speed := 1
 var percent := 0.0
@@ -19,6 +19,6 @@ func _process(delta: float) -> void:
 	percent += delta * speed * 0.01
 	if percent > 1:
 		percent - 1
-	Twin1.progress_ratio = percent
-	Twin2.progress_ratio = percent
+	twin_1.progress_ratio = percent
+	twin_2.progress_ratio = percent
 	pass

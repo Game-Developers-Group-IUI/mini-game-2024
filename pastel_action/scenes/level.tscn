@@ -19,7 +19,7 @@ point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_o6u5w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 739.838, -544.953, 0, 0, 0, 0, 739.838, -13.8155, 0, 0, 0, 0, 726.392, 13.0775, 0, 0, 0, 0, 699.499, 26.524, 0, 0, 0, 0, 121.299, 26.524, 0, 0, 0, 0, -382.945, 26.524)
+"points": PackedVector2Array(0, 0, 0, 0, 739.838, -544.953, 0, 0, 0, 0, 739.838, -60.8783, 0, 0, 0, 0, 719.668, -0.368976, 0, 0, 0, 0, 659.159, 26.524, 0, 0, 0, 0, 121.299, 26.524, 0, 0, 0, 0, -382.945, 26.524)
 }
 point_count = 6
 
@@ -67,12 +67,12 @@ pickup_holder = NodePath("../../PickupHolder")
 scale = Vector2(1.1899, 1.1899)
 texture = ExtResource("4_8g8yy")
 
-[node name="TwinPaths" type="Node2D" parent="AboveGround" node_paths=PackedStringArray("Twin1", "Twin2", "TwinPath1", "TwinPath2")]
+[node name="TwinPaths" type="Node2D" parent="AboveGround" node_paths=PackedStringArray("twin_1", "twin_2", "twin_path_1", "twin_path_2")]
 script = ExtResource("9_01gsq")
-Twin1 = NodePath("TwinPath1/Twin1")
-Twin2 = NodePath("TwinPath2/Twin2")
-TwinPath1 = NodePath("TwinPath1")
-TwinPath2 = NodePath("TwinPath2")
+twin_1 = NodePath("TwinPath1/Twin1")
+twin_2 = NodePath("TwinPath2/Twin2")
+twin_path_1 = NodePath("TwinPath1")
+twin_path_2 = NodePath("TwinPath2")
 
 [node name="TwinPath1" type="Path2D" parent="AboveGround/TwinPaths"]
 y_sort_enabled = true
