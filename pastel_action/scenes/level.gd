@@ -1,6 +1,9 @@
 class_name Level
 extends Node2D
 
+## External References
+@onready var game: Game = get_node(^"/root/Game")
+
 ## Internal References
 @onready var ladder_cooldown_timer: Timer = %LadderCooldown
 
@@ -32,7 +35,17 @@ func _process(_delta: float) -> void:
 					to_aboveground()
 				elif not in_basement:
 					to_basement()
-
+	##Book pop up
+		for body: PhysicsBody2D in $BookWorld.get_overlapping_bodies():
+			if body is Player:
+				$BookMenu.visible = true
+				$BookWorld/SampleBook.visible = false
+				game.player.visible = false
+	##Book pop down
+	if Input.is_action_just_pressed(&"move_down"):
+		$BookMenu.visible = false
+		$BookWorld/SampleBook.visible = true
+		game.player.visible = true
 
 func to_basement() -> void:
 	#TODO: switching active states of interactibles that don't exist yet

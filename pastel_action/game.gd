@@ -17,8 +17,8 @@ extends Node
 @export var score_label: Label
 
 ## Debug
-const launch_running: bool = false
-const quit_on_escape: bool = false
+const launch_running: bool = true
+const quit_on_escape: bool = true
 
 ## Runtime References
 var player: Player

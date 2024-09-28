@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qejkcu3ftinw"]
+[gd_scene load_steps=13 format=3 uid="uid://qejkcu3ftinw"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_xwnn2"]
 [ext_resource type="Texture2D" uid="uid://tsgrhsti8l8g" path="res://assets/programmer_basement.png" id="2_p31m3"]
@@ -9,9 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://b8a7jqafcpmkf" path="res://scenes/ingredients/syrup.tscn" id="7_ikqk7"]
 [ext_resource type="PackedScene" uid="uid://bspoe6xrurxgs" path="res://scenes/ingredients/milk.tscn" id="8_k3f6e"]
 [ext_resource type="PackedScene" uid="uid://j0jouqofdot7" path="res://scenes/ingredients/cane.tscn" id="9_x8vii"]
+[ext_resource type="Texture2D" uid="uid://hjvusdo3hus6" path="res://assets/SampleBook.jpg" id="10_j7m5s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pixmk"]
 radius = 72.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ehsi"]
+size = Vector2(289, 121)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("basement_floor", "pentagram", "aboveground_floor", "walls", "ladder") groups=["game_nodes"]]
 texture_filter = 1
@@ -44,7 +48,7 @@ collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-2208, -216)
-polygon = PackedVector2Array(1192, -280, 1560, -288, 2856, -288, 2856, 720, 1560, 720, 1560, -288, 1192, -280, 1184, 840, 3264, 848, 3288, -464, 1184, -448)
+polygon = PackedVector2Array(1192, -280, 1560, -288, 2121.03, -288, 2856, -288, 2856, 720, 1560, 720, 1560, -288, 1192, -280, 1184, 840, 3264, 848, 3288, -464, 1184, -448)
 
 [node name="Ladder" type="Area2D" parent="."]
 position = Vector2(-608, 0)
@@ -58,6 +62,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="PickupHolder" type="Node2D" parent="."]
+position = Vector2(-8, -455)
 
 [node name="CaramelBasket" parent="." node_paths=PackedStringArray("pickup_holder") instance=ExtResource("6_uriej")]
 position = Vector2(504, -504)
@@ -78,5 +83,23 @@ pickup_holder = NodePath("../PickupHolder")
 position = Vector2(-648, 361)
 ingredient = ExtResource("9_x8vii")
 pickup_holder = NodePath("../PickupHolder")
+
+[node name="BookMenu" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(11.4375, -5.42529)
+scale = Vector2(4.5087, 4.57339)
+texture = ExtResource("10_j7m5s")
+
+[node name="BookWorld" type="Area2D" parent="."]
+position = Vector2(2, -466)
+
+[node name="SampleBook" type="Sprite2D" parent="BookWorld"]
+position = Vector2(0, 3)
+scale = Vector2(0.514768, 0.380509)
+texture = ExtResource("10_j7m5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BookWorld"]
+position = Vector2(4.5, 3.5)
+shape = SubResource("RectangleShape2D_0ehsi")
 
 [connection signal="timeout" from="LadderCooldown" to="." method="_on_ladder_cooldown_timeout"]
