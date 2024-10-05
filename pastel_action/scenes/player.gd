@@ -15,33 +15,42 @@ var input_direction: Vector2 = Vector2.ZERO
 var on_cooldown: bool = false
 var pickup_active: bool = false
 var pickup: Pickup = null
+var within_ladder: bool = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	## Halt all processing if game is paused
 	if game.ui == game.state.paused:
 		return
 	
-	
 	## Deal with pickups
 	if pickup_active and is_instance_valid(pickup):
-		pickup.position = lerp(pickup.position, position, 0.666)
+		pickup.global_position = lerp(pickup.global_position, global_position, 0.666)
 		
-		## drop
+		## Drop
 		if Input.is_action_just_pressed(&"confirm") and not on_cooldown:
-			pickup.pickup_active = false
-			pickup_active = false
-			pickup = null
-			cooldown()
+			if not within_ladder:
+				## Drop the item
+				if game.level.in_basement:
+					pickup.reparent(game.level.basement_floor)
+				else:
+					pickup.reparent(game.level.aboveground_floor)
+				pickup.pickup_active = false
+				pickup_active = false
+				pickup = null
+				cooldown()
 		
 		## throw
 		if Input.is_action_just_pressed(&"cancel") and not on_cooldown:
+			if game.level.in_basement:
+				pickup.reparent(game.level.basement_floor)
+			else:
+				pickup.reparent(game.level.aboveground_floor)
 			pickup.velocity = velocity * 6
 			pickup.pickup_active = false
 			pickup_active = false
 			pickup = null
 			cooldown()
-	move_and_slide()
 	
 	## Move smoothly
 	input_direction = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
@@ -57,11 +66,13 @@ func _process(delta: float) -> void:
 		velocity /= 2
 		if is_zero_approx(velocity.length_squared()):
 			velocity = Vector2.ZERO
-	
-	## Check for cooldown
-	if on_cooldown and cooldown_timer.time_left == 0:
-		on_cooldown = false
+	move_and_slide()
+
 
 func cooldown() -> void:
 	cooldown_timer.start()
 	on_cooldown = true
+
+
+func _on_cooldown_timeout() -> void:
+	on_cooldown = false

@@ -9,6 +9,7 @@ extends Node2D
 var speed := 1
 var percent := 0.0
 
+<<<<<<< Updated upstream
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -22,3 +23,12 @@ func _process(delta: float) -> void:
 	twin_1.progress_ratio = percent
 	twin_2.progress_ratio = percent
 	pass
+=======
+
+func _process(delta: float) -> void:
+	percent += delta * speed * 0.01
+	if percent > 1:
+		percent -= 1
+	twin_1.progress_ratio = percent
+	twin_2.progress_ratio = percent
+>>>>>>> Stashed changes

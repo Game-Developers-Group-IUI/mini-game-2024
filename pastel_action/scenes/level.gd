@@ -1,6 +1,9 @@
 class_name Level
 extends Node2D
 
+## External References
+@onready var game: Game = get_node(^"/root/Game")
+
 ## Internal References
 @onready var ladder_cooldown_timer: Timer = %LadderCooldown
 
@@ -35,18 +38,30 @@ func _process(_delta: float) -> void:
 
 
 func to_basement() -> void:
-	#TODO: switching active states of interactibles that don't exist yet
 	in_basement = true
+	if game.player.pickup:
+		game.player.pickup.reparent(basement_floor)
 	aboveground_floor.hide()
 	basement_floor.show()
 
 
 func to_aboveground() -> void:
 	in_basement = false
-	#TODO: switching active states of interactibles that don't exist yet
+	if game.player.pickup:
+		game.player.pickup.reparent(aboveground_floor)
 	aboveground_floor.show()
 	basement_floor.hide()
 
 
 func _on_ladder_cooldown_timeout() -> void:
 	on_ladder_cooldown = false
+
+
+func _on_ladder_body_entered(body:PhysicsBody2D) -> void:
+	if body is Player:
+		body.within_ladder = true
+
+
+func _on_ladder_body_exited(body:PhysicsBody2D) -> void:
+	if body is Player:
+		body.within_ladder = false
