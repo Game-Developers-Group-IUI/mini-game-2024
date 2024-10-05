@@ -8,9 +8,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-<<<<<<< Updated upstream
-func _process(delta: float) -> void:
-=======
 func _process(_delta: float) -> void:
->>>>>>> Stashed changes
 	pass
