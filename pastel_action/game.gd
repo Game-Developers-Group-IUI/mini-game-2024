@@ -25,7 +25,8 @@ var player: Player
 var level: Level
 
 ## Variables
-enum state {main_menu, paused, playing}
+enum state {main_menu, paused, playing, running_menu}
+var previous_state: state
 var ui: state = state.main_menu
 var time: float = 0.0
 var score: float = 0.0
@@ -43,14 +44,15 @@ func _process(_delta: float) -> void:
 		if quit_on_escape:
 			_on_quit_button_down()
 		## Pause
-		elif ui == state.playing:
+		elif ui == state.playing or state.running_menu:
+			previous_state = ui
 			ui = state.paused
 			main_menu.hide()
 			pause_menu.show()
 			game_interface.hide()
 		## Resume
 		elif ui == state.paused:
-			ui = state.playing
+			ui = previous_state
 			main_menu.hide()
 			pause_menu.hide()
 			game_interface.show()
@@ -121,3 +123,11 @@ func round_digits(num: float, digit: int) -> String:
 			return s[0] + "." + s[1] + "0".repeat(digit - s[1].length())
 	else:
 		return s[0] + "." + "0".repeat(digit)
+
+
+func _on_open_book() -> void:
+	ui = state.running_menu
+
+
+func _on_close_book() -> void:
+	ui = state.playing
