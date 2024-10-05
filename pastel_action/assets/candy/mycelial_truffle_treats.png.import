@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxw0fyakqutl3"
-path="res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"
+uid="uid://c1vgvsw1vwite"
+path="res://.godot/imported/mycelial_truffle_treats.png-c3e8936435cca03746184ef749f4597a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/candy/prickly_peppermint.png"
-dest_files=["res://.godot/imported/prickly_peppermint.png-278ac8a2f9a934cd4b9beb719105b9f8.ctex"]
+source_file="res://assets/candy/mycelial_truffle_treats.png"
+dest_files=["res://.godot/imported/mycelial_truffle_treats.png-c3e8936435cca03746184ef749f4597a.ctex"]
 
 [params]
 

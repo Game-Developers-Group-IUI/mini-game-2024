@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnlysrvj7jt2o"]
+
+[ext_resource type="PackedScene" uid="uid://cehrkbc32xcgy" path="res://scenes/basket_cane.tscn" id="1_xphqp"]
+[ext_resource type="PackedScene" uid="uid://ri63vmbvqox0" path="res://scenes/ingredients/caramel.tscn" id="2_372el"]
+
+[node name="DetectionRadius" instance=ExtResource("1_xphqp")]
+ingredient = ExtResource("2_372el")
