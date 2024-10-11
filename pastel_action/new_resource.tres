@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://c4l46h4xsqc1g"]
+
+[ext_resource type="Script" path="res://recipe.gd" id="1_uay7t"]
+
+[resource]
+script = ExtResource("1_uay7t")
+ingredient_types = []
+ingredient_amount = 0
+plot_1 = false
+plot_2 = false
+plot_3 = false
+plot_4 = false
+plot_5 = false
+plot_6 = false
+plot_7 = false
+plot_8 = false
+plot_9 = false
+plot_10 = false
+plot_11 = false

@@ -18,9 +18,14 @@ var pickup: Pickup = null
 var within_ladder: bool = false
 
 
+func _ready() -> void:
+	Global.open_book.connect(game._on_open_book)
+	Global.close_book.connect(game._on_close_book)
+
+
 func _process(_delta: float) -> void:
-	## Halt all processing if game is paused
-	if game.ui == game.state.paused:
+	## Halt all processing if game is paused or viewing book
+	if game.ui == game.state.paused or game.ui == game.state.running_menu:
 		return
 	
 	## Deal with pickups
