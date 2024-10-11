@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://qejkcu3ftinw"]
+[gd_scene load_steps=12 format=3 uid="uid://qejkcu3ftinw"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_xwnn2"]
-[ext_resource type="Texture2D" uid="uid://tsgrhsti8l8g" path="res://assets/programmer_basement.png" id="2_p31m3"]
 [ext_resource type="Texture2D" uid="uid://deicu2dnpxcm5" path="res://assets/pent_map.png" id="3_81j1i"]
 [ext_resource type="Texture2D" uid="uid://b2hmpjll7i81o" path="res://assets/programmer_aboveground.png" id="4_8g8yy"]
+[ext_resource type="Texture2D" path="res://assets/level/pent_star.png" id="4_ewomw"]
+[ext_resource type="Script" path="res://scenes/pentagram_area.gd" id="5_a6n5a"]
 [ext_resource type="PackedScene" uid="uid://c07pqwwrr7amg" path="res://scenes/basket.tscn" id="7_04ef7"]
 [ext_resource type="Script" path="res://scenes/twin_paths.gd" id="9_01gsq"]
 [ext_resource type="PackedScene" uid="uid://d4iqhvrafclf5" path="res://scenes/twin.tscn" id="9_wc3bo"]
@@ -33,31 +34,39 @@ walls = NodePath("Walls")
 ladder = NodePath("Ladder")
 
 [node name="Basement" type="Sprite2D" parent="."]
-scale = Vector2(1.18551, 1.18551)
-texture = ExtResource("2_p31m3")
 
 [node name="Pentagram" type="Sprite2D" parent="Basement"]
-scale = Vector2(0.333999, 0.333999)
+position = Vector2(2.43187e-05, 4.20002)
+scale = Vector2(0.430303, 0.427711)
 texture = ExtResource("3_81j1i")
 
 [node name="DetectionRadius" parent="Basement" instance=ExtResource("7_04ef7")]
-position = Vector2(418.385, -438.63)
-scale = Vector2(0.843519, 0.843519)
+position = Vector2(504, -504)
 
 [node name="DetectionRadius2" parent="Basement" instance=ExtResource("7_04ef7")]
-position = Vector2(418.385, 303.667)
-scale = Vector2(0.843519, 0.843519)
+position = Vector2(504, 360)
 supplying_ingredient = 2
 
 [node name="DetectionRadius3" parent="Basement" instance=ExtResource("7_04ef7")]
-position = Vector2(-533.104, 303.667)
-scale = Vector2(0.843519, 0.843519)
+position = Vector2(-648, 360)
 supplying_ingredient = 1
 
 [node name="DetectionRadius4" parent="Basement" instance=ExtResource("7_04ef7")]
-position = Vector2(-533.104, -438.63)
-scale = Vector2(0.843519, 0.843519)
+position = Vector2(-648, -504)
 supplying_ingredient = 3
+
+[node name="FloorPentagram" type="Node2D" parent="Basement"]
+
+[node name="Pentagram" type="Sprite2D" parent="Basement/FloorPentagram"]
+position = Vector2(-18, 0)
+scale = Vector2(0.984375, 0.984375)
+texture = ExtResource("4_ewomw")
+
+[node name="PentagramArea" type="Area2D" parent="Basement/FloorPentagram"]
+script = ExtResource("5_a6n5a")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PentagramArea"]
+polygon = PackedVector2Array(-126, 42, -72, -108, 72, -108, 126, 42, 0, 138)
 
 [node name="AboveGround" type="Sprite2D" parent="."]
 visible = false
@@ -93,7 +102,6 @@ rotates = false
 unique_name_in_owner = true
 
 [node name="Walls" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 7
 collision_mask = 3
 
