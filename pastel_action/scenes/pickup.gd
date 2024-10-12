@@ -50,7 +50,10 @@ func _process(_delta: float) -> void:
 	## pickup
 	if Input.is_action_just_pressed(&"confirm"):
 		for body: PhysicsBody2D in pickup_area.get_overlapping_bodies():
-			if body is Player and not body.pickup_active:
+			if body is Player and not body.pickup_active and\
+			## Can only pick up things that are on the same floor as the player
+			((get_parent() == game.level.basement_floor and game.level.in_basement)\
+			or (get_parent() == game.level.aboveground_floor and not game.level.in_basement)):
 				body.cooldown()
 				body.pickup = self
 				body.pickup_active = true
@@ -90,12 +93,9 @@ func _process(_delta: float) -> void:
 		collision_mask = 4
 		collision_layer = 0
 	
-	#position += velocity
 	move_and_slide()
-	pass
 
 
 func consume() -> void:
 	##Kill the thing fancily
 	queue_free()
-	pass
