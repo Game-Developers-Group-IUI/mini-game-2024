@@ -43,6 +43,7 @@ func _process(_delta: float) -> void:
 				pickup.pickup_active = false
 				pickup_active = false
 				pickup = null
+				game.level.bowl.check_ingredients()
 				cooldown()
 		
 		## throw
@@ -55,6 +56,7 @@ func _process(_delta: float) -> void:
 			pickup.pickup_active = false
 			pickup_active = false
 			pickup = null
+			game.level.bowl.check_ingredients()
 			cooldown()
 	
 	## Move smoothly

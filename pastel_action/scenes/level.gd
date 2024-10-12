@@ -14,6 +14,7 @@ extends Node2D
 
 @export_category("Aboveground")
 @export var aboveground_floor: Sprite2D
+@export var bowl: Bowl
 
 @export_category("Universal")
 @export var walls: StaticBody2D
