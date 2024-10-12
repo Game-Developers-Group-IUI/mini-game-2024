@@ -5,3 +5,6 @@
 
 [node name="CacklingCaramel" instance=ExtResource("1_6astb")]
 script = ExtResource("2_r7j5t")
+
+[node name="PickupArea" parent="." index="0"]
+collision_layer = 1

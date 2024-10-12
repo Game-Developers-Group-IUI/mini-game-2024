@@ -1,23 +1,35 @@
-[gd_scene load_steps=12 format=3 uid="uid://qejkcu3ftinw"]
+[gd_scene load_steps=16 format=3 uid="uid://qejkcu3ftinw"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_xwnn2"]
 [ext_resource type="Texture2D" uid="uid://deicu2dnpxcm5" path="res://assets/pent_map.png" id="3_81j1i"]
-[ext_resource type="Texture2D" uid="uid://b2hmpjll7i81o" path="res://assets/programmer_aboveground.png" id="4_8g8yy"]
-[ext_resource type="Texture2D" path="res://assets/level/pent_star.png" id="4_ewomw"]
+[ext_resource type="Script" path="res://scenes/floor_pentagram.gd" id="4_7qwpt"]
+[ext_resource type="Texture2D" uid="uid://dbf37pim6ntfb" path="res://assets/level/pent_star.png" id="4_ewomw"]
 [ext_resource type="Script" path="res://scenes/pentagram_area.gd" id="5_a6n5a"]
 [ext_resource type="PackedScene" uid="uid://c07pqwwrr7amg" path="res://scenes/basket.tscn" id="7_04ef7"]
 [ext_resource type="Script" path="res://scenes/twin_paths.gd" id="9_01gsq"]
 [ext_resource type="PackedScene" uid="uid://d4iqhvrafclf5" path="res://scenes/twin.tscn" id="9_wc3bo"]
 
+[sub_resource type="Gradient" id="Gradient_0g8n3"]
+colors = PackedColorArray(0.337255, 0.0627451, 0.337255, 1, 0.172549, 0.12549, 0.172549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gy2k4"]
+gradient = SubResource("Gradient_0g8n3")
+
+[sub_resource type="Gradient" id="Gradient_y50n2"]
+colors = PackedColorArray(0.337255, 0.572549, 0.337255, 1, 0.172549, 0.407843, 0.172549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y4rkr"]
+gradient = SubResource("Gradient_y50n2")
+
 [sub_resource type="Curve2D" id="Curve2D_tsl6w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 679.329, -544.953, 0, 0, 0, 0, 672.606, -94.4945, 0, 0, 0, 0, 659.159, -54.155, 0, 0, 0, 0, 618.82, -40.7085, 0, 0, 0, 0, 175.085, -40.7085, 0, 0, 0, 0, 121.299, -40.7085, 0, 0, 0, 0, -382.945, -40.7085)
+"points": PackedVector2Array(0, 0, 0, 0, 679.329, -544.953, 0, 0, 0, 0, 672.606, -94.4945, 0, 0, 0, 0, 659.159, -54.155, 0, 0, 0, 0, 618.82, -40.7085, 0, 0, 0, 0, 175.085, -40.7085, 0, 0, 0, 0, 121.299, -40.7085, 0, 0, 0, 0, -662.827, -43.0922)
 }
 point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_o6u5w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 739.838, -544.953, 0, 0, 0, 0, 739.838, -60.8783, 0, 0, 0, 0, 719.668, -0.368976, 0, 0, 0, 0, 659.159, 26.524, 0, 0, 0, 0, 121.299, 26.524, 0, 0, 0, 0, -382.945, 26.524)
+"points": PackedVector2Array(0, 0, 0, 0, 739.838, -544.953, 0, 0, 0, 0, 739.838, -60.8783, 0, 0, 0, 0, 719.668, -0.368976, 0, 0, 0, 0, 659.159, 26.524, 0, 0, 0, 0, 121.299, 26.524, 0, 0, 0, 0, -662.827, 28.9078)
 }
 point_count = 6
 
@@ -34,6 +46,10 @@ walls = NodePath("Walls")
 ladder = NodePath("Ladder")
 
 [node name="Basement" type="Sprite2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Basement"]
+scale = Vector2(20.25, 15.75)
+texture = SubResource("GradientTexture2D_gy2k4")
 
 [node name="Pentagram" type="Sprite2D" parent="Basement"]
 position = Vector2(2.43187e-05, 4.20002)
@@ -56,22 +72,179 @@ position = Vector2(-648, -504)
 supplying_ingredient = 3
 
 [node name="FloorPentagram" type="Node2D" parent="Basement"]
+script = ExtResource("4_7qwpt")
+pieces = [null]
 
-[node name="Pentagram" type="Sprite2D" parent="Basement/FloorPentagram"]
+[node name="PA05" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA05"]
+polygon = PackedVector2Array(-366, -120, -84, -120, -138, 42)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA05"]
+polygon = PackedVector2Array(-366, -120, -84, -120, -138, 42)
+
+[node name="PA06" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA06"]
+polygon = PackedVector2Array(0, -384, -84, -120, 84, -120)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA06"]
+polygon = PackedVector2Array(0, -384, -84, -120, 84, -120)
+
+[node name="PA07" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA07"]
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-366, -120, -84, -120, -138, 42)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA07"]
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-366, -120, -84, -120, -138, 42)
+
+[node name="PA08" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA08"]
+position = Vector2(228, 174)
+polygon = PackedVector2Array(-228, -36, -90, -132, 0, 138)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA08"]
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-228, 312, 0, 138, -138, 42)
+
+[node name="PA09" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA09"]
+position = Vector2(-228, 174)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-228, -36, -90, -132, 0, 138)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA09"]
+polygon = PackedVector2Array(-228, 312, 0, 138, -138, 42)
+
+[node name="PA00" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA00"]
+polygon = PackedVector2Array(0, -384, -36, -384, -78, -378, -120, -366, -180, -342, -228, -312, -258, -288, -288, -258, -324, -210, -354, -156, -366, -120, -84, -120)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA00"]
+polygon = PackedVector2Array(0, -384, -36, -384, -78, -378, -120, -366, -180, -342, -228, -312, -258, -288, -288, -258, -324, -210, -354, -156, -366, -120, -84, -120)
+
+[node name="PA01" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA01"]
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(0, -384, -36, -384, -78, -378, -120, -366, -180, -342, -228, -312, -258, -288, -288, -258, -324, -210, -354, -156, -366, -120, -84, -120)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA01"]
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(0, -384, -36, -384, -78, -378, -120, -366, -180, -342, -228, -312, -258, -288, -288, -258, -324, -210, -354, -156, -366, -120, -84, -120)
+
+[node name="PA02" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA02"]
+position = Vector2(126, 384)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-240, -504, -252, -462, -258, -426, -258, -336, -240, -258, -210, -192, -156, -120, -102, -72, -12, -342)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA02"]
+position = Vector2(126, 384)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-240, -504, -252, -462, -258, -426, -258, -336, -240, -258, -210, -192, -156, -120, -102, -72, -12, -342)
+
+[node name="PA03" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA03"]
+position = Vector2(156, 594)
+polygon = PackedVector2Array(72, -282, -156, -456, -384, -282, -294, -234, -228, -216, -156, -210, -84, -216, -18, -234)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA03"]
+position = Vector2(156, 594)
+polygon = PackedVector2Array(72, -282, -156, -456, -384, -282, -294, -234, -228, -216, -156, -210, -84, -216, -18, -234)
+
+[node name="PA04" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA04"]
+position = Vector2(-126, 384)
+polygon = PackedVector2Array(-240, -504, -252, -462, -258, -426, -258, -336, -240, -258, -210, -192, -156, -120, -102, -72, -12, -342)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA04"]
+position = Vector2(-126, 384)
+polygon = PackedVector2Array(-240, -504, -252, -462, -258, -426, -258, -336, -240, -258, -210, -192, -156, -120, -102, -72, -12, -342)
+
+[node name="PA10" type="Area2D" parent="Basement/FloorPentagram" node_paths=PackedStringArray("col", "spr")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("5_a6n5a")
+col = NodePath("CollisionPolygon2D")
+spr = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA10"]
+polygon = PackedVector2Array(-138, 42, -84, -120, 84, -120, 138, 42, 0, 138)
+
+[node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA10"]
+polygon = PackedVector2Array(-138, 42, -84, -120, 84, -120, 138, 42, 0, 138)
+
+[node name="Pentagram" type="Sprite2D" parent="."]
 position = Vector2(-18, 0)
 scale = Vector2(0.984375, 0.984375)
 texture = ExtResource("4_ewomw")
 
-[node name="PentagramArea" type="Area2D" parent="Basement/FloorPentagram"]
-script = ExtResource("5_a6n5a")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PentagramArea"]
-polygon = PackedVector2Array(-126, 42, -72, -108, 72, -108, 126, 42, 0, 138)
-
 [node name="AboveGround" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(1.1899, 1.1899)
-texture = ExtResource("4_8g8yy")
+
+[node name="Sprite2D" type="Sprite2D" parent="AboveGround"]
+scale = Vector2(20.25, 15.75)
+texture = SubResource("GradientTexture2D_y4rkr")
 
 [node name="TwinPaths" type="Node2D" parent="AboveGround" node_paths=PackedStringArray("twin_1", "twin_2", "twin_path_1", "twin_path_2")]
 script = ExtResource("9_01gsq")
@@ -82,7 +255,7 @@ twin_path_2 = NodePath("TwinPath2")
 
 [node name="TwinPath1" type="Path2D" parent="AboveGround/TwinPaths"]
 y_sort_enabled = true
-position = Vector2(-27.1732, 7.09223)
+position = Vector2(56.8268, 7.09222)
 curve = SubResource("Curve2D_tsl6w")
 
 [node name="Twin1" parent="AboveGround/TwinPaths/TwinPath1" instance=ExtResource("9_wc3bo")]
@@ -91,7 +264,7 @@ rotates = false
 
 [node name="TwinPath2" type="Path2D" parent="AboveGround/TwinPaths"]
 y_sort_enabled = true
-position = Vector2(-27.1732, 7.09223)
+position = Vector2(56.8268, 7.09222)
 curve = SubResource("Curve2D_o6u5w")
 
 [node name="Twin2" parent="AboveGround/TwinPaths/TwinPath2" instance=ExtResource("9_wc3bo")]

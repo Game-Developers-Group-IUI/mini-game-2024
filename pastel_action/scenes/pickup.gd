@@ -11,6 +11,7 @@ var pickup_active: bool = false
 var sprite_height: float = 0.0
 var sprite_accel: float = 0.0
 var landed: bool = false
+var PA: PentagramArea = null
 
 ## The type of ingredient or candy this pickup is
 var item:type
@@ -84,11 +85,17 @@ func _process(_delta: float) -> void:
 		if is_zero_approx(velocity.length_squared()):
 			velocity = Vector2.ZERO
 		collision_mask = 2 + 4
-		collision_layer = 2
+		collision_layer = 2 + 128
 	else:
 		collision_mask = 4
 		collision_layer = 0
 	
 	#position += velocity
 	move_and_slide()
+	pass
+
+
+func consume() -> void:
+	##Kill the thing fancily
+	queue_free()
 	pass

@@ -1,15 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cehrkbc32xcgy"]
+[gd_scene load_steps=2 format=3 uid="uid://cehrkbc32xcgy"]
 
 [ext_resource type="PackedScene" uid="uid://c07pqwwrr7amg" path="res://scenes/basket.tscn" id="1_stity"]
-[ext_resource type="PackedScene" uid="uid://j0jouqofdot7" path="res://scenes/ingredients/cane.tscn" id="2_2m7ub"]
-[ext_resource type="Texture2D" uid="uid://dk1aeaqi6bn14" path="res://assets/level/basket_cane.png" id="2_l06kv"]
 
 [node name="DetectionRadius" instance=ExtResource("1_stity")]
-ingredient = ExtResource("2_2m7ub")
-texture_source = ExtResource("2_l06kv")
 
 [node name="Sprite" parent="BasketCollision" index="0"]
 texture_filter = 1
 position = Vector2(-9.53674e-07, -1.90735e-06)
-scale = Vector2(3, 3)
-texture = ExtResource("2_l06kv")
