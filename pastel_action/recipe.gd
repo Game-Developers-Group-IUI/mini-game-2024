@@ -9,6 +9,10 @@ extends Resource
 @export var slot_5 := -1
 @export var slot_6 := -1
 @export var slot_7 := -1
+@export var slot_8 := -1
+@export var slot_9 := -1
+@export var slot_10:= -1
+@export var slot_11:= -1
 
 var slots:Array[int]
 
