@@ -7,4 +7,3 @@ extends Node2D
 func _process(_delta: float) -> void:
 	for a : PentagramArea in get_children():
 		a.check_ingredients()
-	pass

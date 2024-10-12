@@ -11,7 +11,7 @@ var pickup_active: bool = false
 var sprite_height: float = 0.0
 var sprite_accel: float = 0.0
 var landed: bool = false
-var PA: PentagramArea = null
+var penta_area: PentagramArea = null
 
 ## The type of ingredient or candy this pickup is
 var item:type
