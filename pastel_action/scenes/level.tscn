@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://qejkcu3ftinw"]
+[gd_scene load_steps=17 format=3 uid="uid://qejkcu3ftinw"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_xwnn2"]
 [ext_resource type="Texture2D" uid="uid://deicu2dnpxcm5" path="res://assets/pent_map.png" id="3_81j1i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/pentagram_area.gd" id="5_a6n5a"]
 [ext_resource type="PackedScene" uid="uid://c07pqwwrr7amg" path="res://scenes/basket.tscn" id="7_04ef7"]
 [ext_resource type="Script" path="res://scenes/twin_paths.gd" id="9_01gsq"]
+[ext_resource type="PackedScene" uid="uid://bgjb14u45hosj" path="res://scenes/bowl.tscn" id="9_30lrg"]
 [ext_resource type="PackedScene" uid="uid://d4iqhvrafclf5" path="res://scenes/twin.tscn" id="9_wc3bo"]
 
 [sub_resource type="Gradient" id="Gradient_0g8n3"]
@@ -36,12 +37,13 @@ point_count = 6
 [sub_resource type="CircleShape2D" id="CircleShape2D_pixmk"]
 radius = 72.0
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("basement_floor", "pentagram", "aboveground_floor", "walls", "ladder") groups=["game_nodes"]]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("basement_floor", "pentagram", "aboveground_floor", "bowl", "walls", "ladder") groups=["game_nodes"]]
 texture_filter = 1
 script = ExtResource("1_xwnn2")
 basement_floor = NodePath("Basement")
 pentagram = NodePath("Basement/Pentagram")
 aboveground_floor = NodePath("AboveGround")
+bowl = NodePath("AboveGround/Bowl")
 walls = NodePath("Walls")
 ladder = NodePath("Ladder")
 
@@ -234,7 +236,7 @@ polygon = PackedVector2Array(-138, 42, -84, -120, 84, -120, 138, 42, 0, 138)
 [node name="Polygon2D" type="Polygon2D" parent="Basement/FloorPentagram/PA10"]
 polygon = PackedVector2Array(-138, 42, -84, -120, 84, -120, 138, 42, 0, 138)
 
-[node name="Pentagram" type="Sprite2D" parent="."]
+[node name="Pentagram2" type="Sprite2D" parent="Basement"]
 position = Vector2(-18, 0)
 scale = Vector2(0.984375, 0.984375)
 texture = ExtResource("4_ewomw")
@@ -270,6 +272,9 @@ curve = SubResource("Curve2D_o6u5w")
 [node name="Twin2" parent="AboveGround/TwinPaths/TwinPath2" instance=ExtResource("9_wc3bo")]
 position = Vector2(739.838, -544.953)
 rotates = false
+
+[node name="Bowl" parent="AboveGround" instance=ExtResource("9_30lrg")]
+position = Vector2(-496, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true

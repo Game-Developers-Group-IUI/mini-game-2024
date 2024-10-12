@@ -7,6 +7,7 @@
 radius = 72.0
 
 [node name="Bowl" type="Area2D"]
+collision_mask = 129
 script = ExtResource("1_puqnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
