@@ -1,18 +1,14 @@
 class_name Recipe
 extends Resource
 
-@export var output:int
-@export var slot_1:int
-@export var slot_2:int
-@export var slot_3:int
-@export var slot_4:int
-@export var slot_5:int
-@export var slot_6:int
-@export var slot_7:int
-@export var slot_8:int
-@export var slot_9:int
-@export var slot_10:int
-@export var slot_11:int
+@export var output :int
+@export var slot_1 := -1
+@export var slot_2 := -1
+@export var slot_3 := -1
+@export var slot_4 := -1
+@export var slot_5 := -1
+@export var slot_6 := -1
+@export var slot_7 := -1
 
 var slots:Array[int]
 
@@ -29,14 +25,22 @@ func setup() -> void:
 	slots[8] = slot_9
 	slots[9] = slot_10
 	slots[10] = slot_11
-	pass
 
 
 func shuffle_ingredients() -> void:
 	## Shuffle Array
-	var slotsRecipeHold := {}
-	var slotsCopy := slots.duplicate()
-	for slot : int in slotsCopy:
-		#if slot in 
-		pass
-	pass
+	var slots_copy := slots.duplicate()
+	var slots_rando := []
+	for slot : int in slots_copy:
+		if slot != -1:
+			slots_rando[slots_rando.size()] = slot
+	
+	slots_rando.shuffle()
+	
+	var i := 0
+	for slot : int in slots_copy:
+		if slot != -1:
+			slots_copy[i] = slots_rando.pop_front()
+		i += 1
+	
+	slots = slots_copy
