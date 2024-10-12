@@ -8,7 +8,7 @@ extends Area2D
 @export var col : CollisionPolygon2D
 @export var spr : Polygon2D
 
-##Variables
+## Variables
 var current_ingredient : Pickup
 
 
@@ -18,9 +18,10 @@ func _ready() -> void:
 
 func check_ingredients() -> Pickup:
 	for ing in get_overlapping_bodies():
-		print("body ", ing.name, ing.collision_layer)
 		if ing is Pickup and ing.landed and not ing.penta_area:
-			if ing.get_parent() == game.level.basement_floor:
+			if ing.get_parent() == game.level.basement_floor and\
+			(ing.item == Pickup.type.cackling_caramel or ing.item == Pickup.type.crimson_cane\
+			or ing.item == Pickup.type.spooky_milk or ing.item == Pickup.type.plague_syrup):
 				if current_ingredient != ing:
 					if current_ingredient is Pickup:
 						current_ingredient.consume()
