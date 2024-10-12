@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4ob4of7b2xp5"]
-
-[ext_resource type="PackedScene" uid="uid://cehrkbc32xcgy" path="res://scenes/basket_cane.tscn" id="1_psbs8"]
-
-[node name="DetectionRadius" instance=ExtResource("1_psbs8")]
