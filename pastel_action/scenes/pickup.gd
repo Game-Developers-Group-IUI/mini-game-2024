@@ -14,7 +14,6 @@ var sprite_height: float = 0.0
 var sprite_accel: float = 0.0
 var landed: bool = false
 var penta_area: PentagramArea = null
-var in_bowl: bool = false
 
 ## The type of ingredient or candy this pickup is
 var item:type
@@ -44,9 +43,9 @@ func setup(item_type:type) -> void:
 	item = item_type
 	if item_type == type.cackling_caramel or item_type == type.crimson_cane\
 	or item_type == type.spooky_milk or item_type == type.plague_syrup:
-			sprite.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
+		sprite.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
 	else:
-			sprite.texture = load("res://assets/candy/" + type.find_key(item_type) + ".png")
+		sprite.texture = load("res://assets/candy/" + type.find_key(item_type) + ".png")
 
 
 func _process(_delta: float) -> void:
@@ -56,9 +55,7 @@ func _process(_delta: float) -> void:
 			if body is Player and not body.pickup_active and\
 			## Can only pick up things that are on the same floor as the player
 			((get_parent() == game.level.basement_floor and game.level.in_basement)\
-			or (get_parent() == game.level.aboveground_floor and not game.level.in_basement))\
-			## Can only pick up things that aren't already in the output bowl
-			and not in_bowl:
+			or (get_parent() == game.level.aboveground_floor and not game.level.in_basement)):
 				body.cooldown()
 				body.pickup = self
 				body.pickup_active = true

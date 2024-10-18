@@ -35,16 +35,24 @@ func _process(_delta: float) -> void:
 		## Drop
 		if Input.is_action_just_pressed(&"confirm") and not on_cooldown:
 			if not within_ladder:
+				var putting_in_bowl: bool = false
+				for body: PhysicsBody2D in game.level.bowl.get_overlapping_bodies():
+					## Put in bowl
+					if body is Player and game.level.in_basement == false:
+						if not (pickup.item == Pickup.type.cackling_caramel or pickup.item == Pickup.type.crimson_cane\
+						or pickup.item == Pickup.type.spooky_milk or pickup.item == Pickup.type.plague_syrup):
+							game.level.bowl.check_ingredients(pickup)
+							cooldown()
+							putting_in_bowl = true
 				## Drop the item
-				if game.level.in_basement:
-					pickup.reparent(game.level.basement_floor)
-				else:
-					pickup.reparent(game.level.aboveground_floor)
+				if not putting_in_bowl:
+					if game.level.in_basement:
+						pickup.reparent(game.level.basement_floor)
+					else:
+						pickup.reparent(game.level.aboveground_floor)
 				pickup.pickup_active = false
 				pickup_active = false
 				pickup = null
-				game.level.bowl.check_ingredients()
-				cooldown()
 		
 		## throw
 		if Input.is_action_just_pressed(&"cancel") and not on_cooldown:
@@ -56,7 +64,6 @@ func _process(_delta: float) -> void:
 			pickup.pickup_active = false
 			pickup_active = false
 			pickup = null
-			game.level.bowl.check_ingredients()
 			cooldown()
 	
 	## Move smoothly
