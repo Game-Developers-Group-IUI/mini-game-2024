@@ -1,7 +1,7 @@
 class_name Recipe
 extends Resource
 
-@export var output :int
+@export var output :Pickup.type
 @export var slot_1 := -1
 @export var slot_2 := -1
 @export var slot_3 := -1
@@ -13,6 +13,7 @@ extends Resource
 @export var slot_9 := -1
 @export var slot_10:= -1
 @export var slot_11:= -1
+@export_multiline var text:String
 
 var slots:Array[int]
 

@@ -25,7 +25,14 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	## Halt all processing if game is paused or viewing book
-	if game.ui == game.state.paused or game.ui == game.state.running_menu:
+	if game.ui == game.state.paused:
+		return
+	
+	if game.ui == game.state.running_menu:
+		if Input.is_action_just_pressed("move_left"):
+			pass
+		elif Input.is_action_just_pressed("move_right"):
+			pass
 		return
 	
 	## Deal with pickups
