@@ -36,6 +36,15 @@ func _process(_delta: float) -> void:
 					to_aboveground()
 				elif not in_basement:
 					to_basement()
+	##Book pop up
+		for body: PhysicsBody2D in $Basement/Table.get_overlapping_bodies():
+			if body is Player:
+				$BookMenu.visible = true
+				Global.open_book.emit()
+	##Book pop down
+	if Input.is_action_just_pressed(&"cancel"):
+		Global.close_book.emit()
+		$BookMenu.visible = false
 
 
 func to_basement() -> void:
