@@ -7,6 +7,7 @@ extends CharacterBody2D
 ## Internal References
 @onready var sprite: Sprite2D = %Sprite
 @onready var pickup_area: Area2D = %PickupArea
+@onready var poof_effect: GPUParticles2D = %PoofEffect
 
 ## Variables
 var pickup_active: bool = false
@@ -14,6 +15,7 @@ var sprite_height: float = 0.0
 var sprite_accel: float = 0.0
 var landed: bool = false
 var penta_area: PentagramArea = null
+var deleting: bool = false
 
 ## The type of ingredient or candy this pickup is
 var item:type
@@ -26,6 +28,8 @@ enum type {
 	black_death_licorice, boiling_blood_chew, chemically_treated_coffee, fright_white_chocolate,
 	mycelial_truffle_treats, prickly_peppermint, sour_sickle_pops, strawberry_milk,
 	surreal_cider_shot, wriggling_worms_o_chewing,
+	## Empty type for putting in recipes
+	EMPTY,
 }
 
 ## The color that goes along with each ingredient or candy
@@ -102,4 +106,10 @@ func _process(_delta: float) -> void:
 
 func consume() -> void:
 	##Kill the thing fancily
-	queue_free()
+	deleting = true
+	poof_effect.restart()
+
+
+func _on_poof_effect_finished() -> void:
+	if deleting:
+		queue_free()

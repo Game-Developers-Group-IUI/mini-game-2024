@@ -1,23 +1,26 @@
 class_name Recipe
 extends Resource
 
-@export var output :int
-@export var slot_1 := -1
-@export var slot_2 := -1
-@export var slot_3 := -1
-@export var slot_4 := -1
-@export var slot_5 := -1
-@export var slot_6 := -1
-@export var slot_7 := -1
-@export var slot_8 := -1
-@export var slot_9 := -1
-@export var slot_10:= -1
-@export var slot_11:= -1
+@export var output: Pickup.type = Pickup.type.EMPTY
+@export var slot_1: Pickup.type = Pickup.type.EMPTY
+@export var slot_2: Pickup.type = Pickup.type.EMPTY
+@export var slot_3: Pickup.type = Pickup.type.EMPTY
+@export var slot_4: Pickup.type = Pickup.type.EMPTY
+@export var slot_5: Pickup.type = Pickup.type.EMPTY
+@export var slot_6: Pickup.type = Pickup.type.EMPTY
+@export var slot_7: Pickup.type = Pickup.type.EMPTY
+@export var slot_8: Pickup.type = Pickup.type.EMPTY
+@export var slot_9: Pickup.type = Pickup.type.EMPTY
+@export var slot_10: Pickup.type = Pickup.type.EMPTY
+@export var slot_11: Pickup.type = Pickup.type.EMPTY
 
-var slots:Array[int]
+@export_multiline var text: String
+
+var slots:Array
 
 func setup() -> void:
 	## Fill array
+	slots.resize(11)
 	slots[0] = slot_1
 	slots[1] = slot_2
 	slots[2] = slot_3

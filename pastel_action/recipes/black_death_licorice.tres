@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://brurr0odxiiod"]
+
+[ext_resource type="Script" path="res://recipe.gd" id="1_smvt4"]
+
+[resource]
+script = ExtResource("1_smvt4")
+output = 14
+slot_1 = 14
+slot_2 = 14
+slot_3 = 14
+slot_4 = 14
+slot_5 = 14
+slot_6 = 14
+slot_7 = 14
+slot_8 = 14
+slot_9 = 14
+slot_10 = 14
+slot_11 = 14

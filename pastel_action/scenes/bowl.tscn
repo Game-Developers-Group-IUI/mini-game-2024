@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgjb14u45hosj"]
 
 [ext_resource type="Script" path="res://scenes/bowl.gd" id="1_puqnf"]
-[ext_resource type="Texture2D" uid="uid://budod6itpdvmf" path="res://assets/level/bowl_placeholder.png" id="2_rikkv"]
+[ext_resource type="Texture2D" uid="uid://djed1kx01imn0" path="res://assets/level/CandyBowl.png" id="2_p5b37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb58v"]
 radius = 72.0
@@ -15,4 +15,4 @@ shape = SubResource("CircleShape2D_sb58v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("2_rikkv")
+texture = ExtResource("2_p5b37")

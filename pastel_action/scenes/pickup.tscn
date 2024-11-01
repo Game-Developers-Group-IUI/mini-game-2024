@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsy0hxfsr4gxw"]
+[gd_scene load_steps=7 format=3 uid="uid://bsy0hxfsr4gxw"]
 
 [ext_resource type="Script" path="res://scenes/pickup.gd" id="1_w2ewi"]
 [ext_resource type="Texture2D" uid="uid://cadyiotj0oah5" path="res://assets/ingredients/cackling_caramel.png" id="2_x53m4"]
+[ext_resource type="Material" uid="uid://cxpp78ydejvia" path="res://assets/effects/poof.tres" id="3_1tyfe"]
+[ext_resource type="Texture2D" uid="uid://b2lldoqoqryc6" path="res://assets/particles/fupi_smoke1.png" id="4_31xah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bedei"]
 radius = 48.0
@@ -33,3 +35,16 @@ texture = ExtResource("2_x53m4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ech3c")
+
+[node name="PoofEffect" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+emitting = false
+amount = 16
+process_material = ExtResource("3_1tyfe")
+texture = ExtResource("4_31xah")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="finished" from="PoofEffect" to="." method="_on_poof_effect_finished"]

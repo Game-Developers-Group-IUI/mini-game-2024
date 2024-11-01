@@ -6,9 +6,12 @@ extends CharacterBody2D
 
 ## Internal References
 @onready var cooldown_timer: Timer = %CooldownTimer
+@onready var wand_cooldown: Timer = %WandCooldown
+@onready var wand_effect: GPUParticles2D = %WandEffect
 
 ## Properties
 @export var base_speed: float = 500.0 ## Movement speed, pixels per frame
+@export var craft_hold_duration: float = 1.0 ## How long the cancel button must be held to craft
 
 ## Variables
 var input_direction: Vector2 = Vector2.ZERO
@@ -16,6 +19,9 @@ var on_cooldown: bool = false
 var pickup_active: bool = false
 var pickup: Pickup = null
 var within_ladder: bool = false
+var wand_held_time: float = 0.0
+var wand_waving: bool = false
+var on_wand_cooldown: bool = false
 
 
 func _ready() -> void:
@@ -23,7 +29,7 @@ func _ready() -> void:
 	Global.close_book.connect(game._on_close_book)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	## Halt all processing if game is paused or viewing book
 	if game.ui == game.state.paused or game.ui == game.state.running_menu:
 		return
@@ -66,6 +72,25 @@ func _process(_delta: float) -> void:
 			pickup = null
 			cooldown()
 	
+	elif Input.is_action_just_pressed(&"cancel"):
+		if not pickup_active and not wand_waving and not on_wand_cooldown:
+			wand_waving = true
+			wand_effect.restart()
+	
+	elif Input.is_action_just_released(&"cancel"):
+		wand_waving = false
+		on_wand_cooldown = true
+		wand_effect.emitting = false
+		wand_cooldown.start()
+		if wand_held_time >= craft_hold_duration:
+			print("Craft")
+			game.level.pentagram.craft()
+		wand_held_time = 0
+	
+	elif Input.is_action_pressed(&"cancel"):
+		if wand_waving:
+			wand_held_time += delta
+	
 	## Move smoothly
 	input_direction = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	var speed := base_speed
@@ -90,3 +115,13 @@ func cooldown() -> void:
 
 func _on_cooldown_timeout() -> void:
 	on_cooldown = false
+
+
+func _on_wand_cooldown_timeout() -> void:
+	on_wand_cooldown = false
+
+
+func _on_wand_effect_finished() -> void:
+	pass
+	if wand_waving:
+		wand_effect.restart()

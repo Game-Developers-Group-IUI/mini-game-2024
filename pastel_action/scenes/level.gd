@@ -10,7 +10,7 @@ extends Node2D
 ## Static References
 @export_category("Basement")
 @export var basement_floor: Sprite2D
-@export var pentagram: Sprite2D
+@export var pentagram: Node2D
 
 @export_category("Aboveground")
 @export var aboveground_floor: Sprite2D

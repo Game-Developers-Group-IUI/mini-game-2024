@@ -8,6 +8,9 @@ extends Area2D
 @export var col : CollisionPolygon2D
 @export var spr : Polygon2D
 
+## Properties
+@export var slot_number: int
+
 ## Variables
 var current_ingredient : Pickup
 
@@ -29,9 +32,6 @@ func check_ingredients() -> Pickup:
 					current_ingredient.penta_area = self
 	
 	if current_ingredient: 
-		if current_ingredient.is_queued_for_deletion():
-			current_ingredient = null
-	
 		if current_ingredient is Pickup:
 			if !current_ingredient.landed:
 				current_ingredient.penta_area = null
@@ -43,3 +43,9 @@ func check_ingredients() -> Pickup:
 			spr.modulate = Color(0,0,0,0)
 	
 	return current_ingredient
+
+
+func delete_ingredient() -> void:
+	current_ingredient.consume()
+	current_ingredient = null
+	spr.modulate = Color(0,0,0,0)

@@ -42,7 +42,7 @@ radius = 72.0
 texture_filter = 1
 script = ExtResource("1_xwnn2")
 basement_floor = NodePath("Basement")
-pentagram = NodePath("Basement/Pentagram")
+pentagram = NodePath("Basement/FloorPentagram")
 aboveground_floor = NodePath("AboveGround")
 bowl = NodePath("AboveGround/Bowl")
 walls = NodePath("Walls")
@@ -84,6 +84,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 11
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA10"]
 polygon = PackedVector2Array(-138, 42, -84, -120, 84, -120, 138, 42, 0, 138)
@@ -103,6 +104,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA05"]
 polygon = PackedVector2Array(-366, -120, -84, -120, -138, 42)
@@ -116,6 +118,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA06"]
 polygon = PackedVector2Array(0, -384, -84, -120, 84, -120)
@@ -129,6 +132,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA07"]
 scale = Vector2(-1, 1)
@@ -144,6 +148,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA08"]
 position = Vector2(228, 174)
@@ -159,6 +164,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 10
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA09"]
 position = Vector2(-228, 174)
@@ -174,6 +180,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA00"]
 polygon = PackedVector2Array(0, -384, -36, -384, -78, -378, -120, -366, -180, -342, -228, -312, -258, -288, -288, -258, -324, -210, -354, -156, -366, -120, -84, -120)
@@ -187,6 +194,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA01"]
 scale = Vector2(-1, 1)
@@ -202,6 +210,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA02"]
 position = Vector2(126, 384)
@@ -219,6 +228,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA03"]
 position = Vector2(156, 594)
@@ -234,6 +244,7 @@ collision_mask = 128
 script = ExtResource("5_a6n5a")
 col = NodePath("CollisionPolygon2D")
 spr = NodePath("Polygon2D")
+slot_number = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basement/FloorPentagram/PA04"]
 position = Vector2(-126, 384)

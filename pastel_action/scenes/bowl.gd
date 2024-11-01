@@ -19,7 +19,7 @@ func check_ingredients(ing:Pickup) -> void:
 	sprites[-1].scale = Vector2.ONE * 3
 	## Stack ingredients in a rickety tower
 	sprites[-1].global_position = global_position\
-	+ Vector2(randf_range(-(24*3) * 0.25, (24*3) * 0.25), -(24*3) * 0.5 * (held_candy.size() - 1))
+	+ Vector2(randf_range(-(24*3) * 0.25, (24*3) * 0.25), -(24*3) * 0.5 * (held_candy.size() - 1) - 24)
 
 
 func remove_candy(type:Pickup.type) -> void:
@@ -32,4 +32,4 @@ func remove_candy(type:Pickup.type) -> void:
 			sprites.remove_at(i)
 		## Move higher ingredients down
 		elif removed:
-			sprites[i].global_position -= Vector2(0, -(24*3) * 0.5 * (held_candy.size() - 1))
+			sprites[i].global_position -= Vector2(0, -(24*3) * 0.5 * (held_candy.size() - 1) - 24)

@@ -1,0 +1,17 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://edp5aj0dimmi"]
+
+[sub_resource type="Curve" id="Curve_p5sgq"]
+min_value = -100.0
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 400.0, 0, 1, Vector2(0.25, 100), 0.0, 0.0, 0, 0, Vector2(0.75, -100), 0.0, 0.0, 0, 0, Vector2(1, 0), 400.0, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_0jyhx"]
+curve_x = SubResource("Curve_p5sgq")
+
+[resource]
+particle_flag_disable_z = true
+directional_velocity_min = -1.00002
+directional_velocity_max = 0.999984
+directional_velocity_curve = SubResource("CurveXYZTexture_0jyhx")
+gravity = Vector3(0, -200, 0)

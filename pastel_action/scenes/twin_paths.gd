@@ -14,8 +14,8 @@ var percent := 0.0
 
 
 func _process(delta: float) -> void:
-	## Halt all processing if game is paused or viewing book
-	if game.ui == game.state.paused or game.ui == game.state.running_menu:
+	## Halt all processing if game is paused
+	if game.ui == game.state.paused:
 		return
 	
 	percent += delta * speed * 0.01

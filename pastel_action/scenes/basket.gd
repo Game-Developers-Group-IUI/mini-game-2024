@@ -16,7 +16,7 @@ extends Area2D
 
 func _process(_delta: float) -> void:
 	## pickup
-	if Input.is_action_just_pressed(&"confirm"):
+	if Input.is_action_just_pressed(&"confirm") and game.level.in_basement:
 		for body: PhysicsBody2D in get_overlapping_bodies():
 			if body is Player and not body.pickup_active:
 				var new_ingredient: Pickup = pickup_scene.instantiate()
