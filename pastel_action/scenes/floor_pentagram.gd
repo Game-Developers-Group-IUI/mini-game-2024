@@ -26,7 +26,6 @@ func _process(_delta: float) -> void:
 func craft() -> void:
 	## Check each recipe
 	for recipe: Recipe in recipes:
-		prints(recipe.output, recipe.slots)
 		var matching_slots: int = 0
 		## Check each slot of the pentagram
 		for i: int in range(get_child_count()):
