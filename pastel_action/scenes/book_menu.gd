@@ -1,33 +1,24 @@
 extends Sprite2D
-#
-#page_number = 0
-#
-#enum type {
-	### Ingredients
-	#cackling_caramel, crimson_cane, spooky_milk, plague_syrup,
-	### Candy
-	#black_death_licorice, boiling_blood_chew, chemically_treated_coffee, fright_white_chocolate,
-	#mycelial_truffle_treats, prickly_peppermint, sour_sickle_pops, strawberry_milk,
-	#surreal_cider_shot, wriggling_worms_o_chewing,
-#}
-#
-#
-#func _ready(page_setup) -> void
-	##Retexture each image
-	#
-	#Candy.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient1.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient2.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient3.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient4.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient5.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient6.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient7.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient8.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient9.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#Ingredient10.texture = load("res://assets/ingredients/" + type.find_key(item_type) + ".png")
-	#pass
-#
-#
-#func _process(delta: float) -> void:
-	#pass
+
+## External References
+@onready var game: Game = get_node(^"/root/Game")
+
+## Internal References
+@onready var book_candy: Sprite2D = %BookCandy
+@onready var ingredients_container: Node2D = %IngredientsContainer
+@onready var page_text: Label = %PageText
+
+## Variables
+var current_page: int = 0
+
+
+func change_page(index: int) -> void:
+	current_page = index
+	var recipes: Array[Recipe] = game.level.pentagram.recipes
+	page_text.text = recipes[index].text
+	if recipes[index].output != Pickup.type.EMPTY:
+		book_candy.texture = load("res://assets/candy/" +  Pickup.type.find_key(recipes[index].output) + ".png")
+	for i: int in range(ingredients_container.get_child_count()):
+		if recipes[index].slots[i] != Pickup.type.EMPTY:
+			ingredients_container.get_child(i).texture\
+			= load("res://assets/ingredients/" + Pickup.type.find_key(recipes[index].slots[i]) + ".png")

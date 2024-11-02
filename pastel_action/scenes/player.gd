@@ -36,9 +36,11 @@ func _process(delta: float) -> void:
 	
 	if game.ui == game.state.running_menu:
 		if Input.is_action_just_pressed("move_left"):
-			pass
+			game.level.book_menu.change_page(\
+			clamp(game.level.book_menu.current_page - 1, 0, 11))
 		elif Input.is_action_just_pressed("move_right"):
-			pass
+			game.level.book_menu.change_page(\
+			clamp(game.level.book_menu.current_page + 1, 0, 11))
 		return
 	
 	## Deal with pickups
@@ -90,7 +92,6 @@ func _process(delta: float) -> void:
 		wand_effect.emitting = false
 		wand_cooldown.start()
 		if wand_held_time >= craft_hold_duration:
-			print("Craft")
 			game.level.pentagram.craft()
 		wand_held_time = 0
 	
