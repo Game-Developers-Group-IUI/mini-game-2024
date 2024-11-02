@@ -9,7 +9,7 @@ extends Node2D
 @export var twin_path_1 : Path2D
 @export var twin_path_2 : Path2D
 
-var speed := 30
+var speed := 1
 var percent := 0.0
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	## Halt all processing if game is paused or viewing book
-	if game.ui == game.state.paused or game.ui == game.state.running_menu or game.state.main_menu:
+	if game.ui == game.state.paused or game.ui == game.state.running_menu:
 		return
 	
 	percent += delta * speed * 0.01

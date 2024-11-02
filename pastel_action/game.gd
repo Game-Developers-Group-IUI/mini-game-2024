@@ -108,6 +108,7 @@ func start_game() -> void:
 	var player_new: Player = player_scene.instantiate()
 	add_child(player_new)
 	player = player_new
+	
 
 
 func exit_game() -> void:
@@ -143,13 +144,13 @@ func _on_game_loss() -> void:
 	loss_menu.show()	
 	
 func _restart_game() -> void:
-	time = 0.0
-	score = 0.0
-	level.to_basement()
-	ui=state.playing
+	exit_game()
+	start_game()
 	loss_menu.hide()
+	ui = state.playing
 	
 func _show_main_menu()->void:
+	exit_game()
 	ui = state.main_menu
 	main_menu.show()
 	pause_menu.hide()
