@@ -15,6 +15,7 @@ extends Node
 @export var game_interface: HBoxContainer
 @export var time_label: Label
 @export var score_label: Label
+@export var loss_menu: VBoxContainer
 
 ## Debug
 const launch_running: bool = false
@@ -33,6 +34,8 @@ var score: float = 0.0
 
 
 func _ready() -> void:
+	Global.game_loss.connect(_on_game_loss)
+	#loss_menu.show()
 	if launch_running:
 		_on_start_button_down()
 	else:
@@ -71,6 +74,7 @@ func _on_start_button_down() -> void:
 	main_menu.hide()
 	pause_menu.hide()
 	game_interface.show()
+	loss_menu.hide()
 	start_game()
 
 
@@ -79,6 +83,7 @@ func _on_exit_button_down() -> void:
 	main_menu.show()
 	pause_menu.hide()
 	game_interface.hide()
+	loss_menu.hide()
 	exit_game()
 
 
@@ -103,6 +108,7 @@ func start_game() -> void:
 	var player_new: Player = player_scene.instantiate()
 	add_child(player_new)
 	player = player_new
+	
 
 
 func exit_game() -> void:
@@ -128,6 +134,28 @@ func round_digits(num: float, digit: int) -> String:
 func _on_open_book() -> void:
 	ui = state.running_menu
 
-
 func _on_close_book() -> void:
 	ui = state.playing
+
+func _on_game_loss() -> void:
+	ui=state.paused
+	pause_menu.hide()
+	game_interface.hide()
+	loss_menu.show()	
+	
+func _restart_game() -> void:
+	exit_game()
+	start_game()
+	loss_menu.hide()
+	ui = state.playing
+	
+func _show_main_menu()->void:
+	exit_game()
+	ui = state.main_menu
+	main_menu.show()
+	pause_menu.hide()
+	game_interface.hide()
+	loss_menu.hide()
+	level.hide()
+	
+	

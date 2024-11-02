@@ -12,6 +12,8 @@ extends Node2D
 var speed := 1
 var percent := 0.0
 
+func _ready() -> void:
+	print("twin")
 
 func _process(delta: float) -> void:
 	## Halt all processing if game is paused
@@ -20,6 +22,7 @@ func _process(delta: float) -> void:
 	
 	percent += delta * speed * 0.01
 	if percent > 1:
+		Global.game_loss.emit()
 		percent -= 1
 	twin_1.progress_ratio = percent
 	twin_2.progress_ratio = percent

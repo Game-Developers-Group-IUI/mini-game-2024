@@ -8,3 +8,4 @@ extends Node
 
 signal open_book()
 signal close_book()
+signal game_loss()
