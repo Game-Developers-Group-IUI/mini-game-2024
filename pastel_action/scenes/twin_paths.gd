@@ -12,9 +12,6 @@ extends Node2D
 var speed := 1
 var percent := 0.0
 
-func _ready() -> void:
-	print("twin")
-
 func _process(delta: float) -> void:
 	## Halt all processing if game is paused
 	if game.ui == game.state.paused:
