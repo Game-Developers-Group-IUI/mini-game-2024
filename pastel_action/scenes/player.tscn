@@ -1,12 +1,138 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc1bh0iioueft"]
+[gd_scene load_steps=19 format=3 uid="uid://dc1bh0iioueft"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_cvx1t"]
-[ext_resource type="Texture2D" uid="uid://dcracwiesox6k" path="res://assets/icon.svg" id="2_5i80y"]
 [ext_resource type="Texture2D" uid="uid://58ob8jjuanrh" path="res://assets/particles/leeor_net_flare.png" id="3_8v5yw"]
 [ext_resource type="Material" uid="uid://edp5aj0dimmi" path="res://assets/effects/wand.tres" id="3_g867t"]
+[ext_resource type="Texture2D" uid="uid://bn6cyufnt0pjt" path="res://assets/characters/witch.png" id="5_p4el4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33oow"]
 size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ew71"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(0, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn71t"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(240, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lmlm"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(120, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5ndh"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(40, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpswf"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(0, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpyt0"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(80, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tum4y"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(280, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fujwb"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(240, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idv88"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(320, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vmkv"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(160, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouxke"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(120, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iemq1"]
+atlas = ExtResource("5_p4el4")
+region = Rect2(200, 0, 40, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsf01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ew71")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn71t")
+}],
+"loop": true,
+"name": &"idle_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lmlm")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5ndh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpswf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpyt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpswf")
+}],
+"loop": true,
+"name": &"run_down",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tum4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fujwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idv88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fujwb")
+}],
+"loop": true,
+"name": &"run_side",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vmkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouxke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iemq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouxke")
+}],
+"loop": true,
+"name": &"run_up",
+"speed": 9.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["game_nodes"]]
 texture_filter = 1
@@ -15,9 +141,6 @@ script = ExtResource("1_cvx1t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_33oow")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_5i80y")
 
 [node name="CooldownTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -31,10 +154,22 @@ one_shot = true
 
 [node name="WandEffect" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -24)
 emitting = false
 amount = 4
 process_material = ExtResource("3_g867t")
 texture = ExtResource("3_8v5yw")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -29)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_gsf01")
+animation = &"run_side"
+frame = 1
+frame_progress = 0.0237499
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="WandCooldown" to="." method="_on_wand_cooldown_timeout"]

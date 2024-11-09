@@ -14,6 +14,7 @@ var pickup_active: bool = false
 var sprite_height: float = 0.0
 var sprite_accel: float = 0.0
 var landed: bool = false
+var stopped: bool = false
 var penta_area: PentagramArea = null
 var deleting: bool = false
 
@@ -71,7 +72,7 @@ func _process(_delta: float) -> void:
 	
 	## Pickup anim
 	if pickup_active:
-		sprite_height = lerpf(sprite_height, -24, 0.333)
+		sprite_height = lerpf(sprite_height, -24*4, 0.333)
 	else:
 		if sprite_height < 0:
 			sprite_height += sprite_accel
@@ -101,12 +102,18 @@ func _process(_delta: float) -> void:
 		collision_mask = 4
 		collision_layer = 0
 	
+	if velocity.is_equal_approx(Vector2.ZERO):
+		stopped = true
+	else:
+		stopped = false
+	
 	move_and_slide()
 
 
 func consume() -> void:
 	##Kill the thing fancily
 	deleting = true
+	%Sprite.hide()
 	poof_effect.restart()
 
 

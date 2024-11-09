@@ -406,7 +406,7 @@ position = Vector2(-2208, -216)
 polygon = PackedVector2Array(1192, -280, 1560, -288, 2856, -288, 2856, 720, 1560, 720, 1560, -288, 1192, -280, 1184, 840, 3264, 848, 3288, -464, 1184, -448)
 
 [node name="Ladder" type="Area2D" parent="."]
-position = Vector2(-608, 0)
+position = Vector2(-632, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
 shape = SubResource("CircleShape2D_pixmk")

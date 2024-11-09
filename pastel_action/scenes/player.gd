@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var cooldown_timer: Timer = %CooldownTimer
 @onready var wand_cooldown: Timer = %WandCooldown
 @onready var wand_effect: GPUParticles2D = %WandEffect
+@onready var sprite: AnimatedSprite2D = %Sprite
 
 ## Properties
 @export var base_speed: float = 500.0 ## Movement speed, pixels per frame
@@ -22,17 +23,46 @@ var within_ladder: bool = false
 var wand_held_time: float = 0.0
 var wand_waving: bool = false
 var on_wand_cooldown: bool = false
-
+var animation_direction: String = "down"
+var animation_action: String = "idle"
+var animation: String = "idle_down"
 
 func _ready() -> void:
 	Global.open_book.connect(game._on_open_book)
 	Global.close_book.connect(game._on_close_book)
 
+func _play_animation(default := true) -> void:
+	if default:
+		if sprite.animation != animation:
+			sprite.play(animation)
+
+#var direction_string = { 1 : "side", 2 : "side", 3: "up", 4: "side", 5:"side", 6: "side", 7: "down", 8:"side"}
+
+func _parse_normal_animations() -> String:
+	animation_action = "idle"
+	
+	if input_direction != Vector2.ZERO:
+		animation_action = "run"
+		if input_direction.x < 0:
+			sprite.scale.x = -3
+			animation_direction = "side"
+		elif input_direction.x > 0:
+			sprite.scale.x = 3
+			animation_direction = "side"
+		else:
+			if input_direction.y > 0:
+				animation_direction = "down"
+			elif input_direction.y < 0:
+				animation_direction = "up"
+	
+	return animation_action + "_" + animation_direction
 
 func _process(delta: float) -> void:
 	## Halt all processing if game is paused or viewing book
 	if game.ui == game.state.paused:
 		return
+	
+	_play_animation()
 	
 	if game.ui == game.state.running_menu:
 		if Input.is_action_just_pressed("move_left"):
@@ -108,11 +138,19 @@ func _process(delta: float) -> void:
 	
 	if input_direction:
 		velocity = input_direction * speed
+		
 	else:
 		## Decay speed and set it to zero
 		velocity /= 2
 		if is_zero_approx(velocity.length_squared()):
 			velocity = Vector2.ZERO
+	
+	#if input_direction.x > 0:
+		#
+	animation = _parse_normal_animations()
+	
+	_play_animation()
+	
 	move_and_slide()
 
 
